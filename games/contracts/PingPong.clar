@@ -46,4 +46,11 @@
 (define-constant err-insufficient-balance (err u7))
 
 (define-constant err-invalid-status (err u8))
-(define-constant err-cannot-join-own-game (err u5))
+
+(define-constant err-player2-not-joined (err u9))
+
+(define-constant err-invalid-powerup-type (err u10))
+
+(define-constant err-game-not-found (err u11))
+
+(define-constant err-insufficient-powerups (err u12))(define-constant err-cannot-join-own-game (err u5))
