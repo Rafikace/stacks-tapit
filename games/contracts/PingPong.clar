@@ -214,7 +214,7 @@
             (is-player2 (is-some (get player2 game))))
         (begin
           (asserts! (or is-player1 is-player2) err-unauthorized)
-          (asserts! (>= block-height (+ (get created-at game) game-timeout)) err-game-expired)
+          (asserts! (>= stacks-block-height (+ (get created-at game) game-timeout)) err-game-expired)
           (asserts! (> (get escrow-balance game) u0) err-invalid-amount)
           (map-set games
             {game-id: game-id}
