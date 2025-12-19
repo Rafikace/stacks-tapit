@@ -174,6 +174,9 @@
   )
 )
 
+;; refund management functions
+;;
+
 ;; request-refund - player1 requests refund before game starts
 (define-public (request-refund (game-id uint))
   (let ((game (unwrap! (map-get? games {game-id: game-id}) err-game-not-found)))
