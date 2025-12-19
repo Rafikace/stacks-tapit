@@ -373,7 +373,7 @@
   (ok (is-some (map-get? games {game-id: game-id})))
 )
 
-;; private functions
+;; private functions - utility validations
 ;;
 
 ;; validate-status-transition - validate allowed status transitions
