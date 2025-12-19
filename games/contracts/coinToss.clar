@@ -14,6 +14,7 @@
 (define-constant contract-version "0.0.1")
 
 (define-constant contract-admin none)
+
 (define-constant min-bet u1000000)
 (define-constant max-bet u100000000)
 (define-constant fee-bps u0)
