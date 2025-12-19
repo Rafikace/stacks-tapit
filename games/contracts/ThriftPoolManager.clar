@@ -85,7 +85,7 @@
     (begin
       (asserts! (>= stake-amount min-stake-amount) err-insufficient-stake)
       (asserts! (get is-active group) err-group-not-active)
-      (match (stx-transfer? stake-amount tx-sender (as-contract tx-sender))
+      (match (stx-transfer? stake-amount tx-sender (contract-principal)))
         success (begin
           (var-set total-stake-pool (+ (var-get total-stake-pool) stake-amount))
           (map-set thrift-groups
