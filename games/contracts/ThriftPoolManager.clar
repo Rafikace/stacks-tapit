@@ -189,8 +189,11 @@
     (ok (len (get members group)))
   )
 )
-
-(define-read-only (get-total-stake-pool)
+(define-read-only (is-member-in-group (group-id uint) (member principal))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (ok (is-some (index-of? (get members group) member)))
+  )
+)(define-read-only (get-total-stake-pool)
   (ok (var-get total-stake-pool))
 )
 
