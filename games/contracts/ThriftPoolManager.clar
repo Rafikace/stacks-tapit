@@ -137,11 +137,11 @@
   )
 )
 
-(define-public (show-member-history (member-name (string-utf8 256)))
+(define-public (show-member-history)
   (let ((history (map-get? member-history {member: tx-sender})))
     (match history
       h (ok {name: (get name h), join-dates: (get join-dates h), total-stakes: (get total-stakes h)})
-      (ok {name: member-name, join-dates: (list), total-stakes: (list)})
+      (err err-history-not-found)
     )
   )
 )
