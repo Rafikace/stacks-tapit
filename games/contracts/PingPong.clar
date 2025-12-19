@@ -1,13 +1,17 @@
-;; title: PingPong
-;; version:
-;; summary:
-;; description:
+;; title: ping-pong
+;; version: 0.0.1
+;; summary: Two-player competitive ping pong game with staking and powerups
+;; description: Players stake STX to create and join games, compete with powerups, and claim winnings
 
 ;; traits
 ;;
 
 ;; token definitions
 ;;
+
+;; constants
+;;
+(define-constant waiting-status u1)
 
 ;; constants
 ;;
