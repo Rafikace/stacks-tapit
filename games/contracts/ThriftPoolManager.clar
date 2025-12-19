@@ -30,8 +30,12 @@
 (define-constant err-duplicate-member (err u7))
 
 (define-constant err-history-not-found (err u8))
+
+;; data vars
 ;;
 (define-data-var group-counter uint u0)
+(define-data-var total-stake-pool uint u0)
+(define-data-var total-members uint u0)
 
 ;; data maps
 ;;
