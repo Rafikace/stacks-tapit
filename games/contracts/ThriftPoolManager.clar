@@ -235,3 +235,9 @@
 (define-read-only (get-contract-version)
   (ok contract-version)
 )
+
+(define-read-only (get-group-total-stake (group-id uint))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (ok (get total-staked group))
+  )
+)
