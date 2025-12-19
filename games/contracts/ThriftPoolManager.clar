@@ -146,6 +146,27 @@
   )
 )
 
+(define-public (withdraw-from-group (group-id uint) (withdrawal-amount uint))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (begin
+      (asserts! (get is-active group) err-group-not-active)
+      (match (stx-transfer? withdrawal-amount (as-contract tx-sender) tx-sender)
+        success (begin
+          (var-set total-stake-pool (if (>= (var-get total-stake-pool) withdrawal-amount) (- (var-get total-stake-pool) withdrawal-amount) u0))
+          (map-set thrift-groups
+            {group-id: group-id}
+            (merge group {
+              total-staked: (if (>= (get total-staked group) withdrawal-amount) (- (get total-staked group) withdrawal-amount) u0)
+            })
+          )
+          (ok true)
+        )
+        error (err error)
+      )
+    )
+  )
+)
+
 ;; read only functions
 ;;
 (define-read-only (get-group-details (group-id uint))
