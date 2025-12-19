@@ -111,7 +111,7 @@
             escrow-balance: stake-amount,
             status: waiting-status,
             winner: none,
-            created-at: (block-height),
+            created-at: (unwrap-panic (get-block-info? block-height)),
             completed-at: u0
           }
         )
