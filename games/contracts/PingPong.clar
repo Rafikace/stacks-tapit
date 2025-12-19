@@ -40,3 +40,10 @@
 (define-constant err-player2-slot-not-empty (err u4))
 
 (define-constant err-cannot-join-own-game (err u5))
+
+(define-constant err-invalid-status-transition (err u6))
+
+(define-constant err-insufficient-balance (err u7))
+
+(define-constant err-invalid-status (err u8))
+(define-constant err-cannot-join-own-game (err u5))
