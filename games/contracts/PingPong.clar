@@ -319,6 +319,9 @@
   (ok (var-get dev-fee-vault))
 )
 
+;; vault state functions
+;;
+
 ;; is-vault-paused - check if gameplay is paused
 (define-read-only (is-vault-paused)
   (ok (var-get paused))
