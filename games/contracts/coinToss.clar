@@ -78,6 +78,7 @@
 
 ;; public functions
 ;;
+
 (define-public (create-game (wager uint) (pick uint))
   (let
     (
