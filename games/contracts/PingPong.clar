@@ -144,6 +144,9 @@
   )
 )
 
+;; game settlement and refunds
+;;
+
 ;; end-game - owner settles game with winner
 (define-public (end-game (game-id uint) (winner principal))
   (let ((game (unwrap! (map-get? games {game-id: game-id}) err-game-not-found)))
