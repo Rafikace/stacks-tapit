@@ -39,6 +39,7 @@
 
 ;; data maps
 ;;
+
 (define-map thrift-groups
   {group-id: uint}
   {
