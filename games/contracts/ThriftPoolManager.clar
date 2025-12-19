@@ -213,3 +213,9 @@
     (ok (get created-at group))
   )
 )
+
+(define-read-only (is-group-active (group-id uint))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (ok (get is-active group))
+  )
+)
