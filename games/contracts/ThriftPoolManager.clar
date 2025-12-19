@@ -107,6 +107,7 @@
   (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
     (begin
       (asserts! (get is-active group) err-group-not-active)
+      (var-set total-members (+ (var-get total-members) u1))
       (map-set member-history
         {member: tx-sender}
         {
