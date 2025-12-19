@@ -12,3 +12,7 @@
 ;; constants
 ;;
 
+(define-constant contract-version "0.0.1")
+(define-constant contract-admin none)
+(define-constant minimum-bet u100000)
+(define-constant maximum-bet u100_000_000) ;; 1 STX max cap
