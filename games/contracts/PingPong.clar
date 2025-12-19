@@ -301,6 +301,9 @@
   )
 )
 
+;; vault and balance queries
+;;
+
 ;; get-game-escrow - retrieve escrow balance
 (define-read-only (get-game-escrow (game-id uint))
   (let ((game (unwrap! (map-get? games {game-id: game-id}) err-game-not-found)))
