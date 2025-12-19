@@ -231,3 +231,7 @@
 (define-read-only (get-minimum-stake)
   (ok min-stake-amount)
 )
+
+(define-read-only (get-contract-version)
+  (ok contract-version)
+)
