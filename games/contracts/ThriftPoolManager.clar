@@ -65,6 +65,7 @@
   (let ((new-group-id (+ (var-get group-counter) u1)))
     (begin
       (var-set group-counter new-group-id)
+      (var-set total-members (+ (var-get total-members) u1))
       (map-set thrift-groups
         {group-id: new-group-id}
         {
