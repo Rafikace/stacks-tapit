@@ -365,6 +365,9 @@
   )
 )
 
+;; game existence checks
+;;
+
 ;; is-game-exists - check if game exists
 (define-read-only (is-game-exists (game-id uint))
   (ok (is-some (map-get? games {game-id: game-id})))
