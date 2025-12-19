@@ -23,15 +23,9 @@
 
 (define-constant powerup-multiball u2)
 
-(define-constant powerup-shield u3);; data maps
-;;
+(define-constant powerup-shield u3)
 
-;; public functions
-;;
+(define-constant dev-fee-percentage u5)
 
-;; read only functions
-;;
-
-;; private functions
-;;
+(define-constant game-timeout u604800)
 
