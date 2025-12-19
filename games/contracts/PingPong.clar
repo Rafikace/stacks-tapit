@@ -15,11 +15,11 @@
 
 (define-constant active-status u2)
 
-(define-constant ended-status u3);; constants
-;;
+(define-constant ended-status u3)
 
-;; data vars
-;;
+(define-constant cancelled-status u4)
+
+(define-constant powerup-pad-stretch u1)
 
 ;; data maps
 ;;
