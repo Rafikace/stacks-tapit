@@ -169,6 +169,7 @@
             true)
           (ok {result: result, winner: winner}))))
     err-not-found))
+
 (define-public (claim)
   (let
     (
