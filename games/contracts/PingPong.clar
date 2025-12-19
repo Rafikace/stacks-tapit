@@ -67,4 +67,8 @@
 
 ;; data vars
 ;;
-(define-data-var total-games uint u0)(define-constant err-insufficient-powerups (err u12))(define-constant err-cannot-join-own-game (err u5))
+(define-data-var total-games uint u0)
+
+(define-data-var dev-fee-vault uint u0)
+
+(define-data-var paused bool false)erups (err u12))(define-constant err-cannot-join-own-game (err u5))
