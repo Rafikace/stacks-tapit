@@ -198,3 +198,10 @@
   (ok (var-get total-members))
 )
 
+;; additional read-only functions for member queries
+;;
+(define-read-only (get-group-members (group-id uint))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (ok (get members group))
+  )
+)
