@@ -30,6 +30,7 @@
 (define-constant err-invalid-pick (err u103))
 
 (define-constant err-not-player (err u104))
+
 (define-constant err-already-funded (err u105))
 (define-constant err-not-funded (err u106))
 (define-constant err-already-settled (err u107))
