@@ -211,6 +211,7 @@
 
 (define-private (is-open? (status uint))
   (is-eq status status-open))
+
 (define-private (is-settled? (status uint))
   (is-eq status status-settled))
 (define-private (assert-player (player principal))
