@@ -272,6 +272,9 @@
   )
 )
 
+;; contract control functions
+;;
+
 ;; toggle-pause - owner toggles pause state
 (define-public (toggle-pause)
   (begin
