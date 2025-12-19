@@ -5,19 +5,24 @@ authors = []
 telemetry = true
 cache_dir = '.\.cache'
 requirements = []
+[contracts.CoinTossingGame]
+path = 'contracts/CoinTossingGame.clar'
+clarity_version = 4
+epoch = 'latest'
+
 [contracts.PingPong]
 path = 'contracts/PingPong.clar'
 clarity_version = 4
 epoch = 'latest'
 
-[contracts.CoinTossingGame]
-path = 'contracts/CoinTossingGame.clar'
+[contracts.ThriftPoolManager]
+path = 'contracts/ThriftPoolManager.clar'
 clarity_version = 4
 epoch = 'latest'
 [repl.analysis]
 passes = [
-    'call_checker',
     'check_checker',
+    'call_checker',
 ]
 
 [repl.analysis.lints]
