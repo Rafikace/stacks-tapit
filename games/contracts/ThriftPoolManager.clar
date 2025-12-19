@@ -208,3 +208,8 @@
     (ok (get members group))
   )
 )
+(define-read-only (get-group-creation-date (group-id uint))
+  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
+    (ok (get created-at group))
+  )
+)
