@@ -31,8 +31,12 @@
 (define-constant status-settled u1)
 (define-constant status-canceled u2)
 
+;; data vars
+;;
 (define-data-var next-game-id uint u0)
 
+;; data maps
+;;
 (define-map games
   {id: uint}
   {
@@ -51,6 +55,8 @@
   {amount: uint}
 )
 
+;; public functions
+;;
 (define-public (create-game (wager uint) (pick uint))
   (let
     (
@@ -78,3 +84,103 @@
           (map-set games {id: game-id} game)
           (var-set next-game-id (+ game-id u1))
           (ok game-id))))))
+(define-public (fund-game (game-id uint))
+  (match (map-get? games {id: game-id})
+    game
+    (begin
+      (asserts! (is-open? (get status game)) err-not-open)
+      (unwrap! (assert-player (get player game)) err-not-player)
+      (asserts! (not (get funded game)) err-already-funded)
+      (let
+        (
+          (contract-principal (unwrap! (as-contract? () tx-sender) err-transfer-failed))
+          (wager (get wager game))
+        )
+        (begin
+          (unwrap! (stx-transfer? wager tx-sender contract-principal) err-transfer-failed)
+          (print {event: "fund", id: game-id, player: tx-sender, wager: wager})
+          (map-set games {id: (get id game)} (merge game {funded: true}))
+          (ok true))))
+    err-not-found))
+(define-public (cancel-game (game-id uint))
+  (match (map-get? games {id: game-id})
+    game
+    (begin
+      (unwrap! (assert-player (get player game)) err-not-player)
+      (asserts! (is-open? (get status game)) err-not-open)
+      (asserts! (not (get funded game)) err-already-funded)
+      (print {event: "cancel", id: game-id, player: tx-sender})
+      (map-set games {id: (get id game)} (merge game {status: status-canceled}))
+      (ok true))
+    err-not-found))
+(define-public (flip (game-id uint))
+  (match (map-get? games {id: game-id})
+    game
+    (begin
+      (asserts! (is-open? (get status game)) err-not-open)
+      (asserts! (get funded game) err-not-funded)
+      (unwrap! (assert-player (get player game)) err-not-player)
+      (let
+        (
+          (result (mod (+ stacks-block-height stacks-block-time) u2))
+          (winner (is-eq result (get pick game)))
+          (player (get player game))
+          (wager (get wager game))
+          (winner-ascii (unwrap-panic (to-ascii? winner)))
+        )
+        (let
+          (
+            (payout (if winner (* wager u2) u0))
+            (updated (merge game {status: status-settled, result: (some result), winner: winner}))
+          )
+          (map-set games {id: (get id game)} updated)
+          (print {event: "flip", id: game-id, player: tx-sender, result: result, winner: winner, winner-ascii: winner-ascii, payout: payout})
+          (if (> payout u0)
+            (let
+              (
+                (current (default-to u0 (get amount (map-get? balances {player: player}))))
+              )
+              (map-set balances {player: player} {amount: (+ current payout)}))
+            true)
+          (ok {result: result, winner: winner}))))
+    err-not-found))
+(define-public (claim)
+  (let
+    (
+      (amount (default-to u0 (get amount (map-get? balances {player: tx-sender}))))
+    )
+    (asserts! (> amount u0) err-zero-claim)
+    (let ((recipient tx-sender))
+      (unwrap! (as-contract? ((with-stx amount)) (try! (stx-transfer? amount tx-sender recipient))) err-transfer-failed)
+      (print {event: "claim", player: recipient, amount: amount}))
+    (map-set balances {player: tx-sender} {amount: u0})
+    (ok true)))
+
+;; read only functions
+;;
+(define-read-only (get-next-game-id)
+  (var-get next-game-id))
+(define-read-only (get-game (game-id uint))
+  (map-get? games {id: game-id}))
+(define-read-only (get-balance (who principal))
+  (default-to u0 (get amount (map-get? balances {player: who}))))
+(define-read-only (get-version) contract-version)
+(define-read-only (is-funded (game-id uint))
+  (match (map-get? games {id: game-id})
+    game (get funded game)
+    false))
+(define-read-only (get-result (game-id uint))
+  (match (map-get? games {id: game-id})
+    game (some {result: (get result game), winner: (get winner game)})
+    none))
+
+;; private functions
+;;
+(define-private (is-open? (status uint))
+  (is-eq status status-open))
+(define-private (is-settled? (status uint))
+  (is-eq status status-settled))
+(define-private (assert-player (player principal))
+  (if (is-eq tx-sender player)
+      (ok true)
+      err-not-player))
