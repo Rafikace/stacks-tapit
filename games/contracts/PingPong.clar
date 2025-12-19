@@ -14,7 +14,8 @@
 (define-constant waiting-status u1)
 
 (define-constant active-status u2)
-;; constants
+
+(define-constant ended-status u3);; constants
 ;;
 
 ;; data vars
