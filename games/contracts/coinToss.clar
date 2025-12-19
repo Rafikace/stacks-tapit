@@ -20,6 +20,7 @@
 (define-constant max-bet u100000000)
 
 (define-constant fee-bps u0)
+
 (define-constant err-not-open (err u100))
 (define-constant err-insufficient-bet (err u101))
 (define-constant err-too-high-bet (err u102))
