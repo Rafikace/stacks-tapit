@@ -70,6 +70,7 @@
     winner: bool
   }
 )
+
 (define-map balances
   {player: principal}
   {amount: uint}
