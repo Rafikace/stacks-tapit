@@ -169,3 +169,7 @@
   )
 )
 
+(define-read-only (get-total-stake-pool)
+  (ok (var-get total-stake-pool))
+)
+
