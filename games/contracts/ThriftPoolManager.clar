@@ -223,3 +223,7 @@
 (define-read-only (check-group-exists (group-id uint))
   (ok (is-some (map-get? thrift-groups {group-id: group-id})))
 )
+
+(define-read-only (validate-stake-amount (amount uint))
+  (ok (>= amount min-stake-amount))
+)
