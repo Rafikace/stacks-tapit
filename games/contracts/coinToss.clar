@@ -190,6 +190,7 @@
 
 (define-read-only (get-game (game-id uint))
   (map-get? games {id: game-id}))
+
 (define-read-only (get-balance (who principal))
   (default-to u0 (get amount (map-get? balances {player: who}))))
 (define-read-only (get-version) contract-version)
