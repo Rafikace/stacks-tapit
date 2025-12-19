@@ -159,23 +159,3 @@
   )
 )
 
-(define-read-only (get-total-groups)
-  (ok (var-get group-counter))
-)
-
-(define-read-only (get-group-member-count (group-id uint))
-  (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
-    (ok (len (get members group)))
-  )
-)
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
-
