@@ -311,6 +311,9 @@
   )
 )
 
+;; contract state queries
+;;
+
 ;; get-dev-fees - retrieve total dev fees
 (define-read-only (get-dev-fees)
   (ok (var-get dev-fee-vault))
