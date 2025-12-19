@@ -90,7 +90,7 @@
   {games: (list 10000 uint)}
 )
 
-;; public functions
+;; public functions - game creation and joining
 ;;
 
 ;; create-game - initialize a new game
