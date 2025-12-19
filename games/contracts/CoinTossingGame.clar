@@ -13,7 +13,7 @@
 ;;
 (define-constant contract-version "0.0.1")
 
-(define-constant contract-admin none)
+(define-constant waiting-status u1)
 
 (define-constant min-bet u1000000)
 
