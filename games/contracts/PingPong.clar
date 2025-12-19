@@ -32,3 +32,11 @@
 (define-constant max-player-games u10000)
 
 (define-constant err-gameplay-paused (err u1))
+
+(define-constant err-invalid-amount (err u2))
+
+(define-constant err-unauthorized (err u3))
+
+(define-constant err-player2-slot-not-empty (err u4))
+
+(define-constant err-cannot-join-own-game (err u5))
