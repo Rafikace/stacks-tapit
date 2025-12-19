@@ -30,3 +30,5 @@
 (define-constant status-open u0)
 (define-constant status-settled u1)
 (define-constant status-canceled u2)
+
+(define-data-var next-game-id uint u0)
