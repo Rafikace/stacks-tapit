@@ -32,3 +32,17 @@
 (define-constant status-canceled u2)
 
 (define-data-var next-game-id uint u0)
+
+(define-map games
+  {id: uint}
+  {
+    id: uint,
+    player: principal,
+    wager: uint,
+    pick: uint,
+    funded: bool,
+    status: uint,
+    result: (optional uint),
+    winner: bool
+  }
+)
