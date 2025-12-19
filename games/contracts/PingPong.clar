@@ -283,7 +283,7 @@
   )
 )
 
-;; read only functions
+;; read only functions - game queries
 ;;
 
 ;; get-game - retrieve game details
