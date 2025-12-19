@@ -38,6 +38,7 @@
 (define-constant err-already-settled (err u107))
 
 (define-constant err-transfer-failed (err u108))
+
 (define-constant err-zero-claim (err u109))
 (define-constant err-not-found (err u110))
 (define-constant status-open u0)
