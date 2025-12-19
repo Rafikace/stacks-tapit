@@ -17,3 +17,5 @@
 (define-constant minimum-bet u100000)
 (define-constant maximum-bet u100_000_000) ;; 1 STX max cap
 (define-constant fee-bps u0)
+
+(define-constant err-not-open (err u100))
