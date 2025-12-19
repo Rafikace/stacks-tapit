@@ -200,6 +200,7 @@
   (match (map-get? games {id: game-id})
     game (get funded game)
     false))
+
 (define-read-only (get-result (game-id uint))
   (match (map-get? games {id: game-id})
     game (some {result: (get result game), winner: (get winner game)})
