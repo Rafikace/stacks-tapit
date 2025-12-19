@@ -125,6 +125,7 @@
           (map-set games {id: (get id game)} (merge game {funded: true}))
           (ok true))))
     err-not-found))
+
 (define-public (cancel-game (game-id uint))
   (match (map-get? games {id: game-id})
     game
