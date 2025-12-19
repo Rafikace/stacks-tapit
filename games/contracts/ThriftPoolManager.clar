@@ -121,10 +121,17 @@
   )
 )
 
-(define-public (remove-member (group-id uint) (member-name (string-utf8 256)))
+(define-public (remove-member (group-id uint) (member-address principal))
   (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
     (begin
       (asserts! (get is-active group) err-group-not-active)
+      (map-set thrift-groups
+        {group-id: group-id}
+        (merge group {
+          members: (filter (lambda (x) (not (is-eq x member-address))) (get members group))
+        })
+      )
+      (var-set total-members (if (> (var-get total-members) u0) (- (var-get total-members) u1) u0))
       (ok true)
     )
   )
