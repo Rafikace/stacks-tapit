@@ -173,3 +173,7 @@
   (ok (var-get total-stake-pool))
 )
 
+(define-read-only (get-total-members)
+  (ok (var-get total-members))
+)
+
