@@ -25,7 +25,11 @@
 
 (define-constant err-unauthorized (err u5))
 
-;; data vars
+(define-constant err-invalid-stake-amount (err u6))
+
+(define-constant err-duplicate-member (err u7))
+
+(define-constant err-history-not-found (err u8))
 ;;
 (define-data-var group-counter uint u0)
 
