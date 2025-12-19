@@ -32,7 +32,9 @@
 (define-constant err-not-player (err u104))
 
 (define-constant err-already-funded (err u105))
+
 (define-constant err-not-funded (err u106))
+
 (define-constant err-already-settled (err u107))
 (define-constant err-transfer-failed (err u108))
 (define-constant err-zero-claim (err u109))
