@@ -53,4 +53,15 @@
 
 (define-constant err-game-not-found (err u11))
 
+(define-constant err-insufficient-powerups (err u12))
+
+(define-constant err-transfer-failed (err u13))
+
+(define-constant err-game-expired (err u14))
+
+(define-constant err-not-game-participant (err u15))
+
+(define-constant err-invalid-winner (err u16))
+
+(define-constant err-player-games-limit-exceeded (err u17))
 (define-constant err-insufficient-powerups (err u12))(define-constant err-cannot-join-own-game (err u5))
