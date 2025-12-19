@@ -258,6 +258,9 @@
   )
 )
 
+;; admin functions
+;;
+
 ;; withdraw-dev-fees - owner withdraws dev fees
 (define-public (withdraw-dev-fees)
   (let ((fee-amount (var-get dev-fee-vault)))
