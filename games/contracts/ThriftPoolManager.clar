@@ -219,3 +219,7 @@
     (ok (get is-active group))
   )
 )
+
+(define-read-only (check-group-exists (group-id uint))
+  (ok (is-some (map-get? thrift-groups {group-id: group-id})))
+)
