@@ -227,3 +227,7 @@
 (define-read-only (validate-stake-amount (amount uint))
   (ok (>= amount min-stake-amount))
 )
+
+(define-read-only (get-minimum-stake)
+  (ok min-stake-amount)
+)
