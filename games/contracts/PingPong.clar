@@ -64,4 +64,7 @@
 (define-constant err-invalid-winner (err u16))
 
 (define-constant err-player-games-limit-exceeded (err u17))
-(define-constant err-insufficient-powerups (err u12))(define-constant err-cannot-join-own-game (err u5))
+
+;; data vars
+;;
+(define-data-var total-games uint u0)(define-constant err-insufficient-powerups (err u12))(define-constant err-cannot-join-own-game (err u5))
