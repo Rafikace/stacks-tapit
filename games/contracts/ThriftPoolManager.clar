@@ -71,7 +71,7 @@
         {
           members: (list),
           total-staked: u0,
-          created-at: block-height,
+          created-at: stacks-block-height,
           is-active: true
         }
       )
@@ -123,6 +123,10 @@
   )
 )
 
+(define-private (is-not-member (x principal))
+  (not (is-eq x member-address))
+)
+
 (define-public (remove-member (group-id uint) (member-address principal))
   (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
     (begin
@@ -130,7 +134,7 @@
       (map-set thrift-groups
         {group-id: group-id}
         (merge group {
-          members: (filter (lambda (x) (not (is-eq x member-address))) (get members group))
+          members: (filter is-not-member (get members group))
         })
       )
       (var-set total-members (if (> (var-get total-members) u0) (- (var-get total-members) u1) u0))
@@ -152,7 +156,9 @@
   (let ((group (unwrap! (map-get? thrift-groups {group-id: group-id}) err-invalid-group)))
     (begin
       (asserts! (get is-active group) err-group-not-active)
-      (match (stx-transfer? withdrawal-amount (as-contract tx-sender) tx-sender)
+      (match (as-contract? ((with-stx withdrawal-amount))
+        (stx-transfer? withdrawal-amount tx-sender tx-sender)
+      )
         success (begin
           (var-set total-stake-pool (if (>= (var-get total-stake-pool) withdrawal-amount) (- (var-get total-stake-pool) withdrawal-amount) u0))
           (map-set thrift-groups
