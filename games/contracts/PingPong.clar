@@ -327,6 +327,9 @@
   (ok (var-get paused))
 )
 
+;; game counter functions
+;;
+
 ;; get-total-games - retrieve total game count
 (define-read-only (get-total-games)
   (ok (var-get total-games))
