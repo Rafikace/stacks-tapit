@@ -84,14 +84,20 @@
     (begin
       (asserts! (>= stake-amount min-stake-amount) err-insufficient-stake)
       (asserts! (get is-active group) err-group-not-active)
-      (map-set thrift-groups
-        {group-id: group-id}
-        (merge group {
-          members: (unwrap! (as-max-len? (append (get members group) tx-sender) u1000) err-invalid-group),
-          total-staked: (+ (get total-staked group) stake-amount)
-        })
+      (match (stx-transfer? stake-amount tx-sender (as-contract tx-sender))
+        success (begin
+          (var-set total-stake-pool (+ (var-get total-stake-pool) stake-amount))
+          (map-set thrift-groups
+            {group-id: group-id}
+            (merge group {
+              members: (unwrap! (as-max-len? (append (get members group) tx-sender) u1000) err-invalid-group),
+              total-staked: (+ (get total-staked group) stake-amount)
+            })
+          )
+          (ok true)
+        )
+        error (err error)
       )
-      (ok true)
     )
   )
 )
