@@ -202,6 +202,9 @@
   )
 )
 
+;; timeout and expiration functions
+;;
+
 ;; claim-timeout-refund - claim refund after game timeout
 (define-public (claim-timeout-refund (game-id uint))
   (let ((game (unwrap! (map-get? games {game-id: game-id}) err-game-not-found)))
