@@ -221,7 +221,7 @@
             (merge game {
               escrow-balance: u0,
               status: cancelled-status,
-              completed-at: block-height
+              completed-at: stacks-block-height
             })
           )
           (ok true)
