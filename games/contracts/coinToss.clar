@@ -22,6 +22,7 @@
 (define-constant fee-bps u0)
 
 (define-constant err-not-open (err u100))
+
 (define-constant err-insufficient-bet (err u101))
 (define-constant err-too-high-bet (err u102))
 (define-constant err-invalid-pick (err u103))
