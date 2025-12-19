@@ -29,3 +29,6 @@
 
 (define-constant game-timeout u604800)
 
+(define-constant max-player-games u10000)
+
+(define-constant err-gameplay-paused (err u1))
