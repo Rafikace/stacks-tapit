@@ -1,7 +1,7 @@
-;; title: ping-pong
+;; title: CoinTossingGame
 ;; version: 0.0.1
-;; summary: Two-player ping pong game with escrowed wager and powerup system.
-;; description: Players create and join games with stake amounts, use powerups, and claim winnings.
+;; summary: Single-player coin flip game with escrowed wager.
+;; description: Player picks heads/tails, funds wager, flips on-chain, and claims payout if they win.
 
 ;; traits
 ;;
@@ -13,7 +13,7 @@
 ;;
 (define-constant contract-version "0.0.1")
 
-(define-constant waiting-status u1)
+(define-constant contract-admin none)
 
 (define-constant min-bet u1000000)
 
