@@ -21,6 +21,7 @@
 
 (define-constant powerup-pad-stretch u1)
 
+(define-constant powerup-multiball u2)
 ;; data maps
 ;;
 
