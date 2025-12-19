@@ -214,6 +214,7 @@
 
 (define-private (is-settled? (status uint))
   (is-eq status status-settled))
+
 (define-private (assert-player (player principal))
   (if (is-eq tx-sender player)
       (ok true)
