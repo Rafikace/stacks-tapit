@@ -291,7 +291,10 @@
   (map-get? games {game-id: game-id})
 )
 
-;; get-game-status - get current game status
+;; game state query functions
+;;
+
+;; get-game-status - retrieve game status by id
 (define-read-only (get-game-status (game-id uint))
   (let ((game (unwrap! (map-get? games {game-id: game-id}) err-game-not-found)))
     (ok (get status game))
