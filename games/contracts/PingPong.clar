@@ -231,6 +231,9 @@
   )
 )
 
+;; powerup management functions
+;;
+
 ;; grant-powerup - owner grants powerup to player
 (define-public (grant-powerup (recipient principal) (powerup-type uint))
   (begin
