@@ -56,6 +56,7 @@
 
 ;; data maps
 ;;
+
 (define-map games
   {id: uint}
   {
