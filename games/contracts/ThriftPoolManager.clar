@@ -159,3 +159,7 @@
   )
 )
 
+(define-read-only (get-total-groups)
+  (ok (var-get group-counter))
+)
+
