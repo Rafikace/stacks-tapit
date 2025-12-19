@@ -335,6 +335,9 @@
   (ok (var-get total-games))
 )
 
+;; powerup query functions
+;;
+
 ;; get-powerup-count - retrieve specific powerup count
 (define-read-only (get-powerup-count (player principal) (powerup-type uint))
   (let ((inventory (default-to {pad-stretch-count: u0, multiball-count: u0, shield-count: u0} (map-get? powerup-inventories {player: player}))))
