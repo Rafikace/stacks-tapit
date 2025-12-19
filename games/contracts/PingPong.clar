@@ -13,6 +13,7 @@
 ;;
 (define-constant waiting-status u1)
 
+(define-constant active-status u2)
 ;; constants
 ;;
 
